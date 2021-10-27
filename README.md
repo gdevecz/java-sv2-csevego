@@ -1,2 +1,2 @@
 # java-sv2-csevego
-A csvegőn megosztott dolgok
+A csevegőn megosztott dolgok
