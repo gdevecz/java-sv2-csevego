@@ -1,0 +1,1622 @@
+1.1
+
+Adott egy egész számokból álló tetszőleges intervallumból feltöltött tömb. 
+Melyik az az elem, ameddig a legnagyobb a tömb elemeinek részösszege a tömb elejétől kezdődően?
+Pl {1,4,5,-8,11,-7,-5} -> 11
+
+2
+
+Ezek a vegyes feladatok a változókezelést, feltételvizsgálatokat, ciklusokat, 
+valamint az ezek mellé megtanult anyagokat (véletlen szám sorsolás, adatbekérés, 
+osztások) gyakoroltatják. A feladatok lefedik az első 14 lecke anyagát, de néhol 
+már belecsapnak az alap algoritmusok témakörbe. A feladatok sorszáma nem feltétlenül 
+tükrözi az adott feladat nehézségét. A feladatok megoldásait is mellékelem, amik 
+kedvtől és szabadidőtől függően folyamatosan bővülnek majd. A sorsolásoknál az 
+intervallumot neked kell megoldani, adatbekérés esetén feltételezhetjük, hogy a 
+felhasználó az intervallumnak megfelelő számot ad meg.
+
+2.1
+Kérj be egy egész számot a felhasználótól, és írd ki a nullától való távolságát!
+
+/**
+*
+* @author https://webotlet.hu
+*/
+package alapokgyakorlasa01;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa01
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Adj meg egy egesz szamot: ");
+    int szam = sc.nextInt();
+ 
+    System.out.println("A szam nullatol valo tavolsaga: "
+        + Math.abs(szam) );
+  }
+}
+
+2.2
+Sorsolj ki 3 egész számot a [0;10] intervallumból, és írd ki az átlagukat!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa02;
+ 
+public class AlapokGyakorlasa02
+{
+  public static void main(String[] args)
+  {
+    int szam1 = (int)(Math.random()*11);
+    int szam2 = (int)(Math.random()*11);
+    int szam3 = (int)(Math.random()*11);
+     
+    double atlag = (szam1 + szam2 + szam3) / 3.0;
+     
+    System.out.println("A 3 szam atlaga: " + atlag );
+  }
+}
+
+2.3
+Sorsolj ki egy egész számot az [1;100] intervallumból, és írd ki, milyen számjegyre végződik!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa03;
+ 
+public class AlapokGyakorlasa03
+{
+  public static void main(String[] args)
+  {
+ 
+    int szam = (int) (Math.random() * 100) + 1;
+    System.out.println("A sorsolt szam: " + szam);
+    System.out.println("Az utolso szamjegye: " + szam % 10);
+  }
+}
+
+2.4
+Sorsolj ki egy egész számot a [7;24] intervallumból. Írd ki a szám osztóit!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa04;
+ 
+public class AlapokGyakorlasa04
+{
+  public static void main(String[] args)
+  {
+    int szam = (int) (Math.random() * 18) + 7;
+    System.out.println("A sorsolt szam: " + szam);
+    System.out.print("A szam osztoi: ");
+     
+    for( int i = 1; i <= szam; i++ )
+    {
+      if( szam % i == 0 )
+      {
+        System.out.print(i + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+
+2.5
+Kérj be 2 egész számot a felhasználótól a [-100;100] intervallumból, és írd ki a közöttük lévő páros számokat!
+
+1. megoldás
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa05v1;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa05v1
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Adj meg ket egesz szamot:");
+    int szam1 = sc.nextInt();
+    int szam2 = sc.nextInt();
+     
+    System.out.println("A kozottuk levo szamok: ");
+     
+    if( szam2 > szam1 )
+    {
+      for( int i = szam1 + 1; i < szam2; i++ )
+      {
+        System.out.print(i + " ");
+      }
+      System.out.println();
+    }
+    else
+    {
+      for( int i = szam2 + 1; i < szam1; i++ )
+      {
+        System.out.print(i + " ");
+      }
+      System.out.println();
+    }
+  }
+}
+
+2. megoldás
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa05v2;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa05v2
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Adj meg ket egesz szamot:");
+    int szam1 = sc.nextInt();
+    int szam2 = sc.nextInt();
+ 
+    if( szam1 > szam2 )
+    {
+      int csere = szam1;
+      szam1 = szam2;
+      szam2 = csere;
+    }
+ 
+    System.out.println("A kozottuk levo szamok: ");
+ 
+    for( int i = szam1 + 1; i < szam2; i++ )
+    {
+      System.out.print(i + " ");
+    }
+    System.out.println();
+  }
+}
+
+2.6
+Kérj be egy negatív egész számot a felhasználótól, és írd ki az ettől nagyobb negatív számokat!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa06;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa06
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Adj meg egy negativ egesz szamot:");
+    int szam = sc.nextInt();
+     
+    System.out.println("Az ettol nagyobb negativ szamok: ");
+     
+    for( int i = szam + 1; i < 0; i++ )
+    {
+      System.out.print(i + " ");
+    }
+    System.out.println();
+  }
+}
+
+
+Írd ki a [0;100] intervallumból azokat a számokat, amelyek a 2, 3, és 5 számok közül csak az egyikkel oszthatók!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa07;
+ 
+public class AlapokGyakorlasa07
+{
+  public static void main(String[] args)
+  {
+    for( int i = 0; i <= 100; i++ )
+    {
+      // csak 2-vel oszthato
+      if( i % 2 == 0 && i % 3 != 0 && i % 5 != 0 )
+      {
+        System.out.print(i + " ");
+      }
+      // csak 3-mal oszthato
+      else if( i % 2 != 0 && i % 3 == 0 && i % 5 != 0 )
+      {
+        System.out.print(i + " ");
+      }
+      // csak 5-gyel oszthato
+      else if( i % 2 != 0 && i % 3 != 0 && i % 5 == 0 )
+      {
+        System.out.print(i + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+
+2.8
+Hozz létre egy 10 elemű tömböt, amit tölts fel a [0;20] intervallumból véletlen számokkal! Írd ki a tömb páros egyjegyű számait!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa08;
+ 
+public class AlapokGyakorlasa08
+{
+  public static void main(String[] args)
+  {
+    int[] tomb = new int[10];
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      tomb[i] = (int)(Math.random() * 21);
+    }
+     
+    System.out.println("A teljes tomb:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+     
+    System.out.println("A tomb egyjegyu szamai:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      if( tomb[i] % 2 == 0 && tomb[i] < 10 )
+      {
+        System.out.print(tomb[i] + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+
+2.9
+Hozz létre egy 10 elemű tömböt, amit tölts fel a [-20;20] intervallumból véletlen számokkal! Írd ki a tömb páros egyjegyű számait!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa09;
+ 
+public class AlapokGyakorlasa09
+{
+  public static void main(String[] args)
+  {
+    int[] tomb = new int[10];
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      tomb[i] = (int)(Math.random() * 41) - 20;
+    }
+     
+    System.out.println("A teljes tomb:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+     
+    System.out.println("A tomb egyjegyu szamai:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      if( tomb[i] % 2 == 0 && tomb[i] > -10 && tomb[i] < 10 )
+      {
+        System.out.print(tomb[i] + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+
+2.10
+Hozz létre egy 10 elemű tömböt, amit tölts fel a [-5;15] intervallumból! Írd ki a tömb elemeit fordított sorrendben!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa10;
+ 
+public class AlapokGyakorlasa10
+{
+  public static void main(String[] args)
+  {
+    int[] tomb = new int[10];
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      tomb[i] = (int)(Math.random() * 21) - 5;
+    }
+     
+    System.out.println("Eredeti sorrend:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+     
+    System.out.println("Forditott sorrend:");
+    for( int i = tomb.length - 1; i >= 0; i-- )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+  }
+}
+
+2.11
+Kérj be 5 számot a felhasználótól, melyeket tárolj el egy tömbben! Írd ki a tömb első és utolsó elemét!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa11;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa11
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    int[] tomb = new int[5];
+     
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.println("Adj meg egy egesz szamot: ");
+      tomb[i] = sc.nextInt();
+    }
+     
+    System.out.println("A tomb elso eleme: " + tomb[0]);
+    System.out.println("A tomb utolso eleme: " + tomb[tomb.length - 1]);
+  }
+}
+
+2.12
+Sorsolj ki egy számot az [1;5] intervallumból, melyek egy érdemjegyet jelentenek. Írd ki a számnak megfelelő szöveges értékelést!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa12v1;
+ 
+public class AlapokGyakorlasa12v1
+{
+  public static void main(String[] args)
+  {
+    int jegy = (int)(Math.random() * 5) + 1;
+    System.out.println(jegy);
+     
+    if( jegy == 5 )
+    {
+      System.out.println("jeles");
+    }
+    else if( jegy == 4 )
+    {
+      System.out.println("jo");
+    }
+    else if( jegy == 3 )
+    {
+      System.out.println("kozepes");
+    }
+    else if( jegy == 2 )
+    {
+      System.out.println("elegseges");
+    }
+    else
+    {
+      System.out.println("elegtelen");
+    }
+  }
+}
+
+2.megoldás
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa12v2;
+ 
+public class AlapokGyakorlasa12v2
+{
+  public static void main(String[] args)
+  {
+    int jegy = (int)(Math.random() * 5) + 1;
+    System.out.println(jegy);
+     
+    switch( jegy )
+    {
+      case 5:
+        System.out.println("jeles");
+        break;
+      case 4:
+        System.out.println("jo");
+        break;
+      case 3:
+        System.out.println("kozepes");
+        break;
+      case 2:
+        System.out.println("elegseges");
+        break;
+      case 1:
+        System.out.println("elegtelen");
+        break;
+    }
+  }
+}
+
+2.13
+Olvass be egy egész számot a billentyűzetről a [10;130] intervallumból, mely egy autó sebességét jelenti! A megengedett legnagyobb sebesség az adott útszakaszon 80 km/óra. Írd ki, hogy számszerűen mekkora büntetésre számíthat gyorshajtásért az autós, ha legalább 20-szal túllépés esetén 30e Ft-ból megússza, de 40-nel túllépés felett már 50e Ft a büntetési tétel!
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa13v1;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa13v1
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    int sebesseg = sc.nextInt();
+     
+    if( sebesseg > 120 )
+    {
+      System.out.println(50000);
+    }
+    else if( sebesseg >= 100 )
+    {
+      System.out.println(30000);
+    }
+    else
+    {
+      System.out.println(0);
+    }
+  }
+}
+
+2. megoldás
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa13v2;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa13v2
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    int sebesseg = sc.nextInt();
+     
+    int buntetes = 0;
+     
+    if( sebesseg > 120 )
+    {
+      buntetes = 50000;
+    }
+    else if( sebesseg >= 100 )
+    {
+      buntetes = 30000;
+    }
+     
+    System.out.println(buntetes);
+  }
+}
+
+2.14
+Sorsolj ki egy számot a [7000;15000] intervallumból, mely egy fizetendő összeget jelent. Hány darab ezressel lehet kifizetni az adott összeget? (nincs 5-ösre és 10-esre kerekítés)
+
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa14;
+ 
+public class AlapokGyakorlasa14
+{
+  public static void main(String[] args)
+  {
+    int ar = (int)(Math.random() * 8001) + 7000;
+    System.out.println(ar);
+     
+    int db1000 = ar / 1000;
+     
+    if( ar % 1000 > 0 )
+    {
+      db1000 = db1000 + 1;
+    }
+     
+    System.out.println(db1000 + " darab ezressel lehet kifizetni. ");
+  }
+}
+
+2.15
+Sorsolj ki egy számot a [700;1300] intervallumból, mely egy fizetendő összeget jelent. Mennyi lesz a visszajáró, ha csak 200-as érmékkel fizetek? (nincs 5-ösre és 10-esre kerekítés)
+
+2.16
+Kérj be egy egész számot a felhasználótól, mely egy kör átmérője! Írd ki a kör kerületét, területét!
+
+2.17
+Sorsolj ki egy pozitív páros számot a [1;50] intervallumból, és írd ki a képernyőre!
+
+2.18
+Tölts fel egy 10 elemű tömböt a [0;1000] intervallumból véletlen számokkal! Írd ki a két számjegyű elemeket!
+
+2.19
+Tölts fel egy 10 elemű tömböt a [0;1000] intervallumból véletlen számokkal! Írd ki a két számjegyű elemeket!
+
+2.20
+Tölts fel egy 10 elemű tömböt a [0;100] intervallumból véletlen számokkal! Sorsolj ki egy számot ugyanebből az intervallumból, és írd ki a tömb azon elemeit, amelyek nagyobbak a sorsolt számtól, de nem oszthatók vele!
+
+2.21
+Tölts fel egy 10 elemű tömböt a [-1000;1000] intervallumból véletlen számokkal! Írd ki a tömb kétjegyű elemeit!
+
+2.22
+Tölts fel egy 10 elemű tömböt a [0;1000] intervallumból véletlen számokkal! Írd ki azokat az elemeket, amelyek oszthatók az utolsó számjegyükkel!
+
+2.23
+Sorsolj ki 10 számot a [0;10] intervallumból. Írd ki a kisorsolt számok átlagát!
+
+2.24
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Írd ki minden szám után, hogy páros vagy páratlan!
+
+2.25
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Számold meg a beolvasott számok közül a páratlanokat és írd ki a darabszámot!
+
+2.26
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Írd ki a begépelt páros számok átlagát!
+
+2.27
+Tölts fel egy 10 elemű tömböt páratlan számokkal a [0;100] intervallumból véletlen számokkal és írd ki őket!
+
+2.28
+Tölts fel egy 20 elemű tömböt a [-10;30] intervallumból véletlen számokkal! Sorsolj ki egy egész számot a [0;9] intervallumból Írd ki a tömb azon elemeit, amik erre a számjegyre végződnek, de nem oszthatók vele!
+
+2.29
+Tölts fel egy 20 elemű tömböt a [-100;100] intervallumból véletlen számokkal! Sorsolj ki két számot a [-40;40] intervallumból! Írd ki a tömb azon elemeit, melyek a két külön kisorsolt szám között vannak!
+
+2.30
+Sorsolj ki egy számot a [10;1000] intervallumból! Hány sorsolás kellett hozzá, hogy két számjegyű számot kapj?
+
+3
+
+Ezek a feladatok már erősen építenek a tömbök és ciklusok megfelelő ismeretére. Ha akarsz, saját metódusokat is írhatsz, hogy átláthatóbb megoldást készíts magadnak. A feladatokban csak egész számokkal dolgozz! A feladatokra megoldásokat majd később teszek fel, amelyeket közvetlenül a feladatok után helyezek majd el. Ne csüggedj, ha valamelyikre nem találsz ki saját megoldást. Próbálj meg kitartó lenni, abból tanulsz a legtöbbet, ha egyedül végigjárod az utat.
+
+3.1
+Sorsolj ki egy számot az [1;10000000] intervallumból! Hozz létre egy tömböt, melyben az elemek a kisorsolt szám számjegyei! String műveleteket nem használhatsz!
+
+3.2
+Hozz létre egy 50 elemű tömböt, melyet tölts fel a [0;200] intervallumból! Írd ki azokat a számokat, melyeknek a duplája is megtalálható a tömbben!
+
+3.3
+Hozz létre egy 10 elemű tömböt, melyet tölts fel a [0;9] intervallumból! Írd ki azokat a számokat, melyekből több is megtalálható a tömbben, de minden ilyen számot csak egyszer írj ki!
+
+3.4
+Hozz létre egy 10 elemű tömböt, melyet tölts fel egy tetszőleges intervallumból! Írd ki azokat a számokat, melyekből több is megtalálható a tömbben, de minden ilyen számot csak egyszer írj ki!
+
+3.5
+Hozz létre egy 5 elemű tömböt, melyet tölts fel a [0;9] intervallumból! Írd ki azokat a számokat a tömbből, melyek után csak tőle nagyobb elemek találhatóak!
+
+3.6
+Hozz létre egy 10 elemű tömböt, melyet tölts fel a [0;9] intervallumból! Írd ki azokat az elemeket, melyektől legalább 3 másik tömbelem kisebb!
+
+3.7
+Hozz létre egy 20 elemű tömböt, és töltsd fel a [0;10] intervallumból! Írd ki azokat a számokat, amelyekből csak egy van a tömbben!
+
+3.8
+Hozz létre egy 20 elemű tömböt, melyet tölts fel egy tetszőleges intervallumból! Írd ki azokat a számokat, amelyekből csak egy van a tömbben!
+
+3.9
+Hozz létre egy 20 elemű tömböt, melyet tölts fel a [0;10] intervallumból! Írd ki azokat a számokat, amelyek mögött van 5 tőle nagyobb szám!
+
+3.10
+Hozz létre egy 50 elemű tömböt, melyet tölts fel a [0;200] intervallumból! Írd ki azokat a számokat, amelyeknek nincs valódi osztója (nem 1 és önmaga) a tömbben!
+
+3.11
+Hozz létre egy 10 elemű tömböt, melyet tölts fel a [0;9] intervallumból! Írd ki azokat a számokat, amelyek egyenlőek az előtte lévő számok összegével!
+
+3.12
+Hozz létre egy 10 elemű tömböt, melyet tölts fel a [-10;10] intervallumból! Rendezd át a tömböt úgy, hogy a tömb elején a páros, a végén a páratlan számok legyenek! A páros és páratlan számok egymáshoz viszonyított sorrendje nem változhat meg!
+pl: { 4 -9 6 8 5 -4 5 -10 -5 -6 } -> { 4 6 8 -4 -10 -6 -9 5 5 -5 }
+
+3.13
+Hozz létre egy 10 elemű tömböt az [1;10000] intervallumból! Melyek azok a számok, amelyek számjegyei növekvő sorrendben állnak?
+
+3.14
+Adott egy 5 sorból és 5 oszlopból álló kétdimenziós tömb. Töltsd fel úgy elemekkel a [0;9] intervallumból, hogy a tömb főátlójában (bal felső elemtől a jobb alsó elemig) 0 értékek legyenek, felette csak páros, alatta csak páratlan számok lehetnek, majd írd ki a tömb elemeit!
+
+3.15
+Tölts fel egy 10 sorból és 10 oszlopból álló kétdimenziós tömböt véletlen számokkal a [-100;100] intervallumból! Írd ki, hogy melyik sorban legnagyobb az elemek összege. Ha több ilyen van, akkor az első sor sorszámát írd ki!
+
+3.16
+Tölts fel egy 10 sorból és 10 oszlopból álló kétdimenziós tömböt véletlen számokkal a [0;9] intervallumból! Írd ki, hol van a bal felső sarka annak a 3×3-as négyzetnek a 10×10-es területen belül, amelyik által lefedett területen legnagyobb a számok összege!
+
+3.17
+Tölts fel egy legalább 3×3 tetszőleges méretű, nem feltétlenül négyzet alakú kétdimenziós tömböt (maximum 20×20) véletlen számokkal a [0;9] intervallumból! Hol van annak a + jelnek a közepe, amelyik által lefedett területen legnagyobb a számok összege?
+             2
+jel példa: 5 8 7
+             7
+
+3.18
+Tölts fel egy 10 elemű tömböt páros és páratlan számokkal a [-20;20] intervallumból úgy, hogy mindkét fajtából 5-5 darab legyen! A számok eloszlásába minél kevésbé nyúlj bele! (pl ne tedd az 5-5 db számot egymás mellé, vagy direkt felváltva, stb, igyekezz minél kevésbé befolyásolni a sorrendet)
+
+
+4
+Ide összeszedek pár korábbi és mostani feladat ötletet. Nem biztos, hogy ezek könnyű feladatok! Akkor kezdj neki, ha kitartó vagy 🙂 Később lehet átrakom őket máshová, jó lenne már rendbe rakni és/vagy rendszerezni az eddigi feladataim.
+
+4.1
+Írd ki, hogy melyik a legnagyobb szám a [100;100000] intervallumból, amelyiknek az utolsó számjegye nagyobb, mint az előtte lévő számjegyek összege.
+
+4.2
+Írd ki 100-tól kezdve a második 10 darab olyan számot, amelyiknek pontosan 7 osztója van (1-et és önmagát figyelmen kívül hagyva).
+
+4.3
+Írd ki annak a sorozatnak a 15. elemét, amelyet úgy kapsz meg, hogy minden következő elemet az előző szám számjegyeinek kétszereséből állítod elő! (1, 2, 4, 8, 16, 212, 424, 848, 16816)
+
+4.4
+Sorsolj ki egy 6 számjegyű számot. Add meg, hogy melyik prímszám van ehhez a legközelebb! Ha több ilyen van, írd ki mindet!
+
+4.5
+Sorsolj ki egy 10 számjegyű számot. Írd ki a számon belüli prímszámokat! (pl: 1123456789 -> 2, 3, 5, 7, 11, 23, 67, 89, 1123, 4567, 23456789) A prímszámokat növekvő sorrendben add meg! Ugyanazt a számot ne írd ki kétszer! Ha nincs ilyen, akkor írd ki, hogy nincs ilyen szám!
+
+4.6
+Sorsolj ki egy 10 számjegyű számot. Melyik az a legnagyobb legalább kétjegyű szám ezen belül, amelyiknek a számjegyei növekvő sorrendben állnak? (pl: 1234345673 -> 34567) Ha nincs ilyen, akkor írd ki, hogy nincs ilyen szám!
+
+4.7
+Sorsolj ki egy 10 számjegyű számot. Írd ki azokat a számjegyeket, amelyek nem fordulnak elő a számban! Ha nincs ilyen, írd ki, hogy nincs hiányzó számjegy!
+
+4.8
+Sorsolj ki egy 10 számjegyű számot. Írd ki azokat a 3 számjegyű számokat, amelyek az eredeti számjegyekből összerakhatóak úgy, hogy a számjegyeik növekvő sorrenden állnak. Ugyanazt a számot ne írd ki kétszer! Ha nincsenek ilyenek, akkor írd ki, hogy nincsenek ilyen számok!
+
+4.9
+Sorsolj ki egy 5 számjegyű számot. Írd ki, hogy van-e olyan számjegye, amelyik nagyobb a többi számjegy összegénél! Ha van ilyen, írd ki melyik az! Ha nincs ilyen, írd ki, hogy nincs ilyen számjegy!
+
+
+
+Ezek a vegyes feladatok a változókezelést, feltételvizsgálatokat, ciklusokat, valamint az ezek mellé megtanult anyagokat (véletlen szám sorsolás, adatbekérés, osztások) gyakoroltatják. A feladatok lefedik az első 14 lecke anyagát, de néhol már belecsapnak az alap algoritmusok témakörbe. A feladatok sorszáma nem feltétlenül tükrözi az adott feladat nehézségét. A feladatok megoldásait is mellékelem, amik kedvtől és szabadidőtől függően folyamatosan bővülnek majd. A sorsolásoknál az intervallumot neked kell megoldani, adatbekérés esetén feltételezhetjük, hogy a felhasználó az intervallumnak megfelelő számot ad meg.
+
+Kérj be egy egész számot a felhasználótól, és írd ki a nullától való távolságát!
+Bezár
+/**
+*
+* @author https://webotlet.hu
+*/
+package alapokgyakorlasa01;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa01
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Adj meg egy egesz szamot: ");
+    int szam = sc.nextInt();
+ 
+    System.out.println("A szam nullatol valo tavolsaga: "
+        + Math.abs(szam) );
+  }
+}
+Sorsolj ki 3 egész számot a [0;10] intervallumból, és írd ki az átlagukat!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa02;
+ 
+public class AlapokGyakorlasa02
+{
+  public static void main(String[] args)
+  {
+    int szam1 = (int)(Math.random()*11);
+    int szam2 = (int)(Math.random()*11);
+    int szam3 = (int)(Math.random()*11);
+     
+    double atlag = (szam1 + szam2 + szam3) / 3.0;
+     
+    System.out.println("A 3 szam atlaga: " + atlag );
+  }
+}
+Sorsolj ki egy egész számot az [1;100] intervallumból, és írd ki, milyen számjegyre végződik!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa03;
+ 
+public class AlapokGyakorlasa03
+{
+  public static void main(String[] args)
+  {
+ 
+    int szam = (int) (Math.random() * 100) + 1;
+    System.out.println("A sorsolt szam: " + szam);
+    System.out.println("Az utolso szamjegye: " + szam % 10);
+  }
+}
+Sorsolj ki egy egész számot a [7;24] intervallumból. Írd ki a szám osztóit!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa04;
+ 
+public class AlapokGyakorlasa04
+{
+  public static void main(String[] args)
+  {
+    int szam = (int) (Math.random() * 18) + 7;
+    System.out.println("A sorsolt szam: " + szam);
+    System.out.print("A szam osztoi: ");
+     
+    for( int i = 1; i <= szam; i++ )
+    {
+      if( szam % i == 0 )
+      {
+        System.out.print(i + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+Kérj be 2 egész számot a felhasználótól a [-100;100] intervallumból, és írd ki a közöttük lévő páros számokat!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa05v1;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa05v1
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Adj meg ket egesz szamot:");
+    int szam1 = sc.nextInt();
+    int szam2 = sc.nextInt();
+     
+    System.out.println("A kozottuk levo szamok: ");
+     
+    if( szam2 > szam1 )
+    {
+      for( int i = szam1 + 1; i < szam2; i++ )
+      {
+        System.out.print(i + " ");
+      }
+      System.out.println();
+    }
+    else
+    {
+      for( int i = szam2 + 1; i < szam1; i++ )
+      {
+        System.out.print(i + " ");
+      }
+      System.out.println();
+    }
+  }
+}
+
+2. megoldás
+Kérj be egy negatív egész számot a felhasználótól, és írd ki az ettől nagyobb negatív számokat!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa06;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa06
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Adj meg egy negativ egesz szamot:");
+    int szam = sc.nextInt();
+     
+    System.out.println("Az ettol nagyobb negativ szamok: ");
+     
+    for( int i = szam + 1; i < 0; i++ )
+    {
+      System.out.print(i + " ");
+    }
+    System.out.println();
+  }
+}
+Írd ki a [0;100] intervallumból azokat a számokat, amelyek a 2, 3, és 5 számok közül csak az egyikkel oszthatók!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa07;
+ 
+public class AlapokGyakorlasa07
+{
+  public static void main(String[] args)
+  {
+    for( int i = 0; i <= 100; i++ )
+    {
+      // csak 2-vel oszthato
+      if( i % 2 == 0 && i % 3 != 0 && i % 5 != 0 )
+      {
+        System.out.print(i + " ");
+      }
+      // csak 3-mal oszthato
+      else if( i % 2 != 0 && i % 3 == 0 && i % 5 != 0 )
+      {
+        System.out.print(i + " ");
+      }
+      // csak 5-gyel oszthato
+      else if( i % 2 != 0 && i % 3 != 0 && i % 5 == 0 )
+      {
+        System.out.print(i + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+Hozz létre egy 10 elemű tömböt, amit tölts fel a [0;20] intervallumból véletlen számokkal! Írd ki a tömb páros egyjegyű számait!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa08;
+ 
+public class AlapokGyakorlasa08
+{
+  public static void main(String[] args)
+  {
+    int[] tomb = new int[10];
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      tomb[i] = (int)(Math.random() * 21);
+    }
+     
+    System.out.println("A teljes tomb:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+     
+    System.out.println("A tomb egyjegyu szamai:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      if( tomb[i] % 2 == 0 && tomb[i] < 10 )
+      {
+        System.out.print(tomb[i] + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+Hozz létre egy 10 elemű tömböt, amit tölts fel a [-20;20] intervallumból véletlen számokkal! Írd ki a tömb páros egyjegyű számait!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa09;
+ 
+public class AlapokGyakorlasa09
+{
+  public static void main(String[] args)
+  {
+    int[] tomb = new int[10];
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      tomb[i] = (int)(Math.random() * 41) - 20;
+    }
+     
+    System.out.println("A teljes tomb:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+     
+    System.out.println("A tomb egyjegyu szamai:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      if( tomb[i] % 2 == 0 && tomb[i] > -10 && tomb[i] < 10 )
+      {
+        System.out.print(tomb[i] + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+Hozz létre egy 10 elemű tömböt, amit tölts fel a [-5;15] intervallumból! Írd ki a tömb elemeit fordított sorrendben!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa10;
+ 
+public class AlapokGyakorlasa10
+{
+  public static void main(String[] args)
+  {
+    int[] tomb = new int[10];
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      tomb[i] = (int)(Math.random() * 21) - 5;
+    }
+     
+    System.out.println("Eredeti sorrend:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+     
+    System.out.println("Forditott sorrend:");
+    for( int i = tomb.length - 1; i >= 0; i-- )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+  }
+}
+Kérj be 5 számot a felhasználótól, melyeket tárolj el egy tömbben! Írd ki a tömb első és utolsó elemét!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa11;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa11
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    int[] tomb = new int[5];
+     
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.println("Adj meg egy egesz szamot: ");
+      tomb[i] = sc.nextInt();
+    }
+     
+    System.out.println("A tomb elso eleme: " + tomb[0]);
+    System.out.println("A tomb utolso eleme: " + tomb[tomb.length - 1]);
+  }
+}
+Sorsolj ki egy számot az [1;5] intervallumból, melyek egy érdemjegyet jelentenek. Írd ki a számnak megfelelő szöveges értékelést!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa12v1;
+ 
+public class AlapokGyakorlasa12v1
+{
+  public static void main(String[] args)
+  {
+    int jegy = (int)(Math.random() * 5) + 1;
+    System.out.println(jegy);
+     
+    if( jegy == 5 )
+    {
+      System.out.println("jeles");
+    }
+    else if( jegy == 4 )
+    {
+      System.out.println("jo");
+    }
+    else if( jegy == 3 )
+    {
+      System.out.println("kozepes");
+    }
+    else if( jegy == 2 )
+    {
+      System.out.println("elegseges");
+    }
+    else
+    {
+      System.out.println("elegtelen");
+    }
+  }
+}
+
+2. megoldás
+Olvass be egy egész számot a billentyűzetről a [10;130] intervallumból, mely egy autó sebességét jelenti! A megengedett legnagyobb sebesség az adott útszakaszon 80 km/óra. Írd ki, hogy számszerűen mekkora büntetésre számíthat gyorshajtásért az autós, ha legalább 20-szal túllépés esetén 30e Ft-ból megússza, de 40-nel túllépés felett már 50e Ft a büntetési tétel!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa13v1;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa13v1
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    int sebesseg = sc.nextInt();
+     
+    if( sebesseg > 120 )
+    {
+      System.out.println(50000);
+    }
+    else if( sebesseg >= 100 )
+    {
+      System.out.println(30000);
+    }
+    else
+    {
+      System.out.println(0);
+    }
+  }
+}
+
+2. megoldás
+Sorsolj ki egy számot a [7000;15000] intervallumból, mely egy fizetendő összeget jelent. Hány darab ezressel lehet kifizetni az adott összeget? (nincs 5-ösre és 10-esre kerekítés)
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa14;
+ 
+public class AlapokGyakorlasa14
+{
+  public static void main(String[] args)
+  {
+    int ar = (int)(Math.random() * 8001) + 7000;
+    System.out.println(ar);
+     
+    int db1000 = ar / 1000;
+     
+    if( ar % 1000 > 0 )
+    {
+      db1000 = db1000 + 1;
+    }
+     
+    System.out.println(db1000 + " darab ezressel lehet kifizetni. ");
+  }
+}
+Sorsolj ki egy számot a [700;1300] intervallumból, mely egy fizetendő összeget jelent. Mennyi lesz a visszajáró, ha csak 200-as érmékkel fizetek? (nincs 5-ösre és 10-esre kerekítés)
+Kérj be egy egész számot a felhasználótól, mely egy kör átmérője! Írd ki a kör kerületét, területét!
+Sorsolj ki egy pozitív páros számot a [1;50] intervallumból, és írd ki a képernyőre!
+Tölts fel egy 10 elemű tömböt a [0;100] intervallumból véletlen számokkal! Írd ki azokat az elemeket, amelyek 0-ra végződnek, de 4-gyel nem oszthatók!
+Tölts fel egy 10 elemű tömböt a [0;1000] intervallumból véletlen számokkal! Írd ki a két számjegyű elemeket!
+Tölts fel egy 10 elemű tömböt a [0;100] intervallumból véletlen számokkal! Sorsolj ki egy számot ugyanebből az intervallumból, és írd ki a tömb azon elemeit, amelyek nagyobbak a sorsolt számtól, de nem oszthatók vele!
+Tölts fel egy 10 elemű tömböt a [-1000;1000] intervallumból véletlen számokkal! Írd ki a tömb kétjegyű elemeit!
+Tölts fel egy 10 elemű tömböt a [0;1000] intervallumból véletlen számokkal! Írd ki azokat az elemeket, amelyek oszthatók az utolsó számjegyükkel!
+Sorsolj ki 10 számot a [0;10] intervallumból. Írd ki a kisorsolt számok átlagát!
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Írd ki minden szám után, hogy páros vagy páratlan!
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Számold meg a beolvasott számok közül a páratlanokat és írd ki a darabszámot!
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Írd ki a begépelt páros számok átlagát!
+Tölts fel egy 10 elemű tömböt páratlan számokkal a [0;100] intervallumból véletlen számokkal és írd ki őket!
+Tölts fel egy 20 elemű tömböt a [-10;30] intervallumból véletlen számokkal! Sorsolj ki egy egész számot a [0;9] intervallumból Írd ki a tömb azon elemeit, amik erre a számjegyre végződnek, de nem oszthatók vele!
+Tölts fel egy 20 elemű tömböt a [-100;100] intervallumból véletlen számokkal! Sorsolj ki két számot a [-40;40] intervallumból! Írd ki a tömb azon elemeit, melyek a két külön kisorsolt szám között vannak!
+Sorsolj ki egy számot a [10;1000] intervallumból! Hány sorsolás kellett hozzá, hogy két számjegyű számot kapj?Ezek a vegyes feladatok a változókezelést, feltételvizsgálatokat, ciklusokat, valamint az ezek mellé megtanult anyagokat (véletlen szám sorsolás, adatbekérés, osztások) gyakoroltatják. A feladatok lefedik az első 14 lecke anyagát, de néhol már belecsapnak az alap algoritmusok témakörbe. A feladatok sorszáma nem feltétlenül tükrözi az adott feladat nehézségét. A feladatok megoldásait is mellékelem, amik kedvtől és szabadidőtől függően folyamatosan bővülnek majd. A sorsolásoknál az intervallumot neked kell megoldani, adatbekérés esetén feltételezhetjük, hogy a felhasználó az intervallumnak megfelelő számot ad meg.
+
+Kérj be egy egész számot a felhasználótól, és írd ki a nullától való távolságát!
+Bezár
+/**
+*
+* @author https://webotlet.hu
+*/
+package alapokgyakorlasa01;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa01
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.print("Adj meg egy egesz szamot: ");
+    int szam = sc.nextInt();
+ 
+    System.out.println("A szam nullatol valo tavolsaga: "
+        + Math.abs(szam) );
+  }
+}
+Sorsolj ki 3 egész számot a [0;10] intervallumból, és írd ki az átlagukat!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa02;
+ 
+public class AlapokGyakorlasa02
+{
+  public static void main(String[] args)
+  {
+    int szam1 = (int)(Math.random()*11);
+    int szam2 = (int)(Math.random()*11);
+    int szam3 = (int)(Math.random()*11);
+     
+    double atlag = (szam1 + szam2 + szam3) / 3.0;
+     
+    System.out.println("A 3 szam atlaga: " + atlag );
+  }
+}
+Sorsolj ki egy egész számot az [1;100] intervallumból, és írd ki, milyen számjegyre végződik!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa03;
+ 
+public class AlapokGyakorlasa03
+{
+  public static void main(String[] args)
+  {
+ 
+    int szam = (int) (Math.random() * 100) + 1;
+    System.out.println("A sorsolt szam: " + szam);
+    System.out.println("Az utolso szamjegye: " + szam % 10);
+  }
+}
+Sorsolj ki egy egész számot a [7;24] intervallumból. Írd ki a szám osztóit!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa04;
+ 
+public class AlapokGyakorlasa04
+{
+  public static void main(String[] args)
+  {
+    int szam = (int) (Math.random() * 18) + 7;
+    System.out.println("A sorsolt szam: " + szam);
+    System.out.print("A szam osztoi: ");
+     
+    for( int i = 1; i <= szam; i++ )
+    {
+      if( szam % i == 0 )
+      {
+        System.out.print(i + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+Kérj be 2 egész számot a felhasználótól a [-100;100] intervallumból, és írd ki a közöttük lévő páros számokat!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa05v1;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa05v1
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Adj meg ket egesz szamot:");
+    int szam1 = sc.nextInt();
+    int szam2 = sc.nextInt();
+     
+    System.out.println("A kozottuk levo szamok: ");
+     
+    if( szam2 > szam1 )
+    {
+      for( int i = szam1 + 1; i < szam2; i++ )
+      {
+        System.out.print(i + " ");
+      }
+      System.out.println();
+    }
+    else
+    {
+      for( int i = szam2 + 1; i < szam1; i++ )
+      {
+        System.out.print(i + " ");
+      }
+      System.out.println();
+    }
+  }
+}
+
+2. megoldás
+Kérj be egy negatív egész számot a felhasználótól, és írd ki az ettől nagyobb negatív számokat!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa06;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa06
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Adj meg egy negativ egesz szamot:");
+    int szam = sc.nextInt();
+     
+    System.out.println("Az ettol nagyobb negativ szamok: ");
+     
+    for( int i = szam + 1; i < 0; i++ )
+    {
+      System.out.print(i + " ");
+    }
+    System.out.println();
+  }
+}
+Írd ki a [0;100] intervallumból azokat a számokat, amelyek a 2, 3, és 5 számok közül csak az egyikkel oszthatók!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa07;
+ 
+public class AlapokGyakorlasa07
+{
+  public static void main(String[] args)
+  {
+    for( int i = 0; i <= 100; i++ )
+    {
+      // csak 2-vel oszthato
+      if( i % 2 == 0 && i % 3 != 0 && i % 5 != 0 )
+      {
+        System.out.print(i + " ");
+      }
+      // csak 3-mal oszthato
+      else if( i % 2 != 0 && i % 3 == 0 && i % 5 != 0 )
+      {
+        System.out.print(i + " ");
+      }
+      // csak 5-gyel oszthato
+      else if( i % 2 != 0 && i % 3 != 0 && i % 5 == 0 )
+      {
+        System.out.print(i + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+Hozz létre egy 10 elemű tömböt, amit tölts fel a [0;20] intervallumból véletlen számokkal! Írd ki a tömb páros egyjegyű számait!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa08;
+ 
+public class AlapokGyakorlasa08
+{
+  public static void main(String[] args)
+  {
+    int[] tomb = new int[10];
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      tomb[i] = (int)(Math.random() * 21);
+    }
+     
+    System.out.println("A teljes tomb:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+     
+    System.out.println("A tomb egyjegyu szamai:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      if( tomb[i] % 2 == 0 && tomb[i] < 10 )
+      {
+        System.out.print(tomb[i] + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+Hozz létre egy 10 elemű tömböt, amit tölts fel a [-20;20] intervallumból véletlen számokkal! Írd ki a tömb páros egyjegyű számait!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa09;
+ 
+public class AlapokGyakorlasa09
+{
+  public static void main(String[] args)
+  {
+    int[] tomb = new int[10];
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      tomb[i] = (int)(Math.random() * 41) - 20;
+    }
+     
+    System.out.println("A teljes tomb:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+     
+    System.out.println("A tomb egyjegyu szamai:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      if( tomb[i] % 2 == 0 && tomb[i] > -10 && tomb[i] < 10 )
+      {
+        System.out.print(tomb[i] + " ");
+      }
+    }
+    System.out.println();
+  }
+}
+Hozz létre egy 10 elemű tömböt, amit tölts fel a [-5;15] intervallumból! Írd ki a tömb elemeit fordított sorrendben!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa10;
+ 
+public class AlapokGyakorlasa10
+{
+  public static void main(String[] args)
+  {
+    int[] tomb = new int[10];
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      tomb[i] = (int)(Math.random() * 21) - 5;
+    }
+     
+    System.out.println("Eredeti sorrend:");
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+     
+    System.out.println("Forditott sorrend:");
+    for( int i = tomb.length - 1; i >= 0; i-- )
+    {
+      System.out.print(tomb[i] + " ");
+    }
+    System.out.println();
+  }
+}
+Kérj be 5 számot a felhasználótól, melyeket tárolj el egy tömbben! Írd ki a tömb első és utolsó elemét!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa11;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa11
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    int[] tomb = new int[5];
+     
+    for( int i = 0; i < tomb.length; i++ )
+    {
+      System.out.println("Adj meg egy egesz szamot: ");
+      tomb[i] = sc.nextInt();
+    }
+     
+    System.out.println("A tomb elso eleme: " + tomb[0]);
+    System.out.println("A tomb utolso eleme: " + tomb[tomb.length - 1]);
+  }
+}
+Sorsolj ki egy számot az [1;5] intervallumból, melyek egy érdemjegyet jelentenek. Írd ki a számnak megfelelő szöveges értékelést!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa12v1;
+ 
+public class AlapokGyakorlasa12v1
+{
+  public static void main(String[] args)
+  {
+    int jegy = (int)(Math.random() * 5) + 1;
+    System.out.println(jegy);
+     
+    if( jegy == 5 )
+    {
+      System.out.println("jeles");
+    }
+    else if( jegy == 4 )
+    {
+      System.out.println("jo");
+    }
+    else if( jegy == 3 )
+    {
+      System.out.println("kozepes");
+    }
+    else if( jegy == 2 )
+    {
+      System.out.println("elegseges");
+    }
+    else
+    {
+      System.out.println("elegtelen");
+    }
+  }
+}
+
+2. megoldás
+Olvass be egy egész számot a billentyűzetről a [10;130] intervallumból, mely egy autó sebességét jelenti! A megengedett legnagyobb sebesség az adott útszakaszon 80 km/óra. Írd ki, hogy számszerűen mekkora büntetésre számíthat gyorshajtásért az autós, ha legalább 20-szal túllépés esetén 30e Ft-ból megússza, de 40-nel túllépés felett már 50e Ft a büntetési tétel!
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa13v1;
+ 
+import java.util.Scanner;
+ 
+public class AlapokGyakorlasa13v1
+{
+  public static void main(String[] args)
+  {
+    Scanner sc = new Scanner(System.in);
+    int sebesseg = sc.nextInt();
+     
+    if( sebesseg > 120 )
+    {
+      System.out.println(50000);
+    }
+    else if( sebesseg >= 100 )
+    {
+      System.out.println(30000);
+    }
+    else
+    {
+      System.out.println(0);
+    }
+  }
+}
+
+2. megoldás
+Sorsolj ki egy számot a [7000;15000] intervallumból, mely egy fizetendő összeget jelent. Hány darab ezressel lehet kifizetni az adott összeget? (nincs 5-ösre és 10-esre kerekítés)
+Bezár
+/**
+ *
+ * @author https://webotlet.hu
+ */
+package alapokgyakorlasa14;
+ 
+public class AlapokGyakorlasa14
+{
+  public static void main(String[] args)
+  {
+    int ar = (int)(Math.random() * 8001) + 7000;
+    System.out.println(ar);
+     
+    int db1000 = ar / 1000;
+     
+    if( ar % 1000 > 0 )
+    {
+      db1000 = db1000 + 1;
+    }
+     
+    System.out.println(db1000 + " darab ezressel lehet kifizetni. ");
+  }
+}
+Sorsolj ki egy számot a [700;1300] intervallumból, mely egy fizetendő összeget jelent. Mennyi lesz a visszajáró, ha csak 200-as érmékkel fizetek? (nincs 5-ösre és 10-esre kerekítés)
+Kérj be egy egész számot a felhasználótól, mely egy kör átmérője! Írd ki a kör kerületét, területét!
+Sorsolj ki egy pozitív páros számot a [1;50] intervallumból, és írd ki a képernyőre!
+Tölts fel egy 10 elemű tömböt a [0;100] intervallumból véletlen számokkal! Írd ki azokat az elemeket, amelyek 0-ra végződnek, de 4-gyel nem oszthatók!
+Tölts fel egy 10 elemű tömböt a [0;1000] intervallumból véletlen számokkal! Írd ki a két számjegyű elemeket!
+Tölts fel egy 10 elemű tömböt a [0;100] intervallumból véletlen számokkal! Sorsolj ki egy számot ugyanebből az intervallumból, és írd ki a tömb azon elemeit, amelyek nagyobbak a sorsolt számtól, de nem oszthatók vele!
+Tölts fel egy 10 elemű tömböt a [-1000;1000] intervallumból véletlen számokkal! Írd ki a tömb kétjegyű elemeit!
+Tölts fel egy 10 elemű tömböt a [0;1000] intervallumból véletlen számokkal! Írd ki azokat az elemeket, amelyek oszthatók az utolsó számjegyükkel!
+Sorsolj ki 10 számot a [0;10] intervallumból. Írd ki a kisorsolt számok átlagát!
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Írd ki minden szám után, hogy páros vagy páratlan!
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Számold meg a beolvasott számok közül a páratlanokat és írd ki a darabszámot!
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Írd ki a begépelt páros számok átlagát!
+Tölts fel egy 10 elemű tömböt páratlan számokkal a [0;100] intervallumból véletlen számokkal és írd ki őket!
+Tölts fel egy 20 elemű tömböt a [-10;30] intervallumból véletlen számokkal! Sorsolj ki egy egész számot a [0;9] intervallumból Írd ki a tömb azon elemeit, amik erre a számjegyre végződnek, de nem oszthatók vele!
+Tölts fel egy 20 elemű tömböt a [-100;100] intervallumból véletlen számokkal! Sorsolj ki két számot a [-40;40] intervallumból! Írd ki a tömb azon elemeit, melyek a két külön kisorsolt szám között vannak!
+Sorsolj ki egy számot a [10;1000] intervallumból! Hány sorsolás kellett hozzá, hogy két számjegyű számot kapj?kal! Írd ki azokat az elemeket, amelyek 0-ra végződnek, de 4-gyel nem oszthatók!
+Tölts fel egy 10 elemű tömböt a [0;1000] intervallumból véletlen számokkal! Írd ki a két számjegyű elemeket!
+Tölts fel egy 10 elemű tömböt a [0;100] intervallumból véletlen számokkal! Sorsolj ki egy számot ugyanebből az intervallumból, és írd ki a tömb azon elemeit, amelyek nagyobbak a sorsolt számtól, de nem oszthatók vele!
+Tölts fel egy 10 elemű tömböt a [-1000;1000] intervallumból véletlen számokkal! Írd ki a tömb kétjegyű elemeit!
+Tölts fel egy 10 elemű tömböt a [0;1000] intervallumból véletlen számokkal! Írd ki azokat az elemeket, amelyek oszthatók az utolsó számjegyükkel!
+Sorsolj ki 10 számot a [0;10] intervallumból. Írd ki a kisorsolt számok átlagát!
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Írd ki minden szám után, hogy páros vagy páratlan!
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Számold meg a beolvasott számok közül a páratlanokat és írd ki a darabszámot!
+Olvass be számokat a billentyűzetről addig, amíg 0-át nem adsz meg. Írd ki a begépelt páros számok átlagát!
+Tölts fel egy 10 elemű tömböt páratlan számokkal a [0;100] intervallumból véletlen számokkal és írd ki őket!
+Tölts fel egy 20 elemű tömböt a [-10;30] intervallumból véletlen számokkal! Sorsolj ki egy egész számot a [0;9] intervallumból Írd ki a tömb azon elemeit, amik erre a számjegyre végződnek, de nem oszthatók vele!
+Tölts fel egy 20 elemű tömböt a [-100;100] intervallumból véletlen számokkal! Sorsolj ki két számot a [-40;40] intervallumból! Írd ki a tömb azon elemeit, melyek a két külön kisorsolt szám között vannak!
+Sorsolj ki egy számot a [10;1000] intervallumból! Hány sorsolás kellett hozzá, hogy két számjegyű számot kapj?
+
+3
+Ezek a feladatok már erősen építenek a tömbök és ciklusok megfelelő ismeretére. Ha akarsz, saját metódusokat is írhatsz, hogy átláthatóbb megoldást készíts magadnak. A feladatokban csak egész számokkal dolgozz! A feladatokra megoldásokat majd később teszek fel, amelyeket közvetlenül a feladatok után helyezek majd el. Ne csüggedj, ha valamelyikre nem találsz ki saját megoldást. Próbálj meg kitartó lenni, abból tanulsz a legtöbbet, ha egyedül végigjárod az utat.
+
+3.1
+Sorsolj ki egy számot az [1;10000000] intervallumból! Hozz létre egy tömböt, melyben az elemek a kisorsolt szám számjegyei! String műveleteket nem használhatsz!
+Hozz létre egy 50 elemű tömböt, melyet tölts fel a [0;200] intervallumból! Írd ki azokat a számokat, melyeknek a duplája is megtalálható a tömbben!
+Hozz létre egy 10 elemű tömböt, melyet tölts fel a [0;9] intervallumból! Írd ki azokat a számokat, melyekből több is megtalálható a tömbben, de minden ilyen számot csak egyszer írj ki!
+Hozz létre egy 10 elemű tömböt, melyet tölts fel egy tetszőleges intervallumból! Írd ki azokat a számokat, melyekből több is megtalálható a tömbben, de minden ilyen számot csak egyszer írj ki!
+Hozz létre egy 5 elemű tömböt, melyet tölts fel a [0;9] intervallumból! Írd ki azokat a számokat a tömbből, melyek után csak tőle nagyobb elemek találhatóak!
+Hozz létre egy 10 elemű tömböt, melyet tölts fel a [0;9] intervallumból! Írd ki azokat az elemeket, melyektől legalább 3 másik tömbelem kisebb!
+Hozz létre egy 20 elemű tömböt, és töltsd fel a [0;10] intervallumból! Írd ki azokat a számokat, amelyekből csak egy van a tömbben!
+Hozz létre egy 20 elemű tömböt, melyet tölts fel egy tetszőleges intervallumból! Írd ki azokat a számokat, amelyekből csak egy van a tömbben!
+Hozz létre egy 20 elemű tömböt, melyet tölts fel a [0;10] intervallumból! Írd ki azokat a számokat, amelyek mögött van 5 tőle nagyobb szám!
+Hozz létre egy 50 elemű tömböt, melyet tölts fel a [0;200] intervallumból! Írd ki azokat a számokat, amelyeknek nincs valódi osztója (nem 1 és önmaga) a tömbben!
+Hozz létre egy 10 elemű tömböt, melyet tölts fel a [0;9] intervallumból! Írd ki azokat a számokat, amelyek egyenlőek az előtte lévő számok összegével!
+Hozz létre egy 10 elemű tömböt, melyet tölts fel a [-10;10] intervallumból! Rendezd át a tömböt úgy, hogy a tömb elején a páros, a végén a páratlan számok legyenek! A páros és páratlan számok egymáshoz viszonyított sorrendje nem változhat meg!
+pl: { 4 -9 6 8 5 -4 5 -10 -5 -6 } -> { 4 6 8 -4 -10 -6 -9 5 5 -5 }
+Hozz létre egy 10 elemű tömböt az [1;10000] intervallumból! Melyek azok a számok, amelyek számjegyei növekvő sorrendben állnak?
+Adott egy 5 sorból és 5 oszlopból álló kétdimenziós tömb. Töltsd fel úgy elemekkel a [0;9] intervallumból, hogy a tömb főátlójában (bal felső elemtől a jobb alsó elemig) 0 értékek legyenek, felette csak páros, alatta csak páratlan számok lehetnek, majd írd ki a tömb elemeit!
+Tölts fel egy 10 sorból és 10 oszlopból álló kétdimenziós tömböt véletlen számokkal a [-100;100] intervallumból! Írd ki, hogy melyik sorban legnagyobb az elemek összege. Ha több ilyen van, akkor az első sor sorszámát írd ki!
+Tölts fel egy 10 sorból és 10 oszlopból álló kétdimenziós tömböt véletlen számokkal a [0;9] intervallumból! Írd ki, hol van a bal felső sarka annak a 3×3-as négyzetnek a 10×10-es területen belül, amelyik által lefedett területen legnagyobb a számok összege!
+Tölts fel egy legalább 3×3 tetszőleges méretű, nem feltétlenül négyzet alakú kétdimenziós tömböt (maximum 20×20) véletlen számokkal a [0;9] intervallumból! Hol van annak a + jelnek a közepe, amelyik által lefedett területen legnagyobb a számok összege?
+             2
+jel példa: 5 8 7
+             7
+Tölts fel egy 10 elemű tömböt páros és páratlan számokkal a [-20;20] intervallumból úgy, hogy mindkét fajtából 5-5 darab legyen! A számok eloszlásába minél kevésbé nyúlj bele! (pl ne tedd az 5-5 db számot egymás mellé, vagy direkt felváltva, stb, igyekezz minél kevésbé befolyásolni a sorrendet)
+
+4
+Ide összeszedek pár korábbi és mostani feladat ötletet. Nem biztos, hogy ezek könnyű feladatok! Akkor kezdj neki, ha kitartó vagy 🙂 Később lehet átrakom őket máshová, jó lenne már rendbe rakni és/vagy rendszerezni az eddigi feladataim.
+
+Írd ki, hogy melyik a legnagyobb szám a [100;100000] intervallumból, amelyiknek az utolsó számjegye nagyobb, mint az előtte lévő számjegyek összege.
+Írd ki 100-tól kezdve a második 10 darab olyan számot, amelyiknek pontosan 7 osztója van (1-et és önmagát figyelmen kívül hagyva).
+Írd ki annak a sorozatnak a 15. elemét, amelyet úgy kapsz meg, hogy minden következő elemet az előző szám számjegyeinek kétszereséből állítod elő! (1, 2, 4, 8, 16, 212, 424, 848, 16816)
+Sorsolj ki egy 6 számjegyű számot. Add meg, hogy melyik prímszám van ehhez a legközelebb! Ha több ilyen van, írd ki mindet!
+Sorsolj ki egy 10 számjegyű számot. Írd ki a számon belüli prímszámokat! (pl: 1123456789 -> 2, 3, 5, 7, 11, 23, 67, 89, 1123, 4567, 23456789) A prímszámokat növekvő sorrendben add meg! Ugyanazt a számot ne írd ki kétszer! Ha nincs ilyen, akkor írd ki, hogy nincs ilyen szám!
+Sorsolj ki egy 10 számjegyű számot. Melyik az a legnagyobb legalább kétjegyű szám ezen belül, amelyiknek a számjegyei növekvő sorrendben állnak? (pl: 1234345673 -> 34567) Ha nincs ilyen, akkor írd ki, hogy nincs ilyen szám!
+Sorsolj ki egy 10 számjegyű számot. Írd ki azokat a számjegyeket, amelyek nem fordulnak elő a számban! Ha nincs ilyen, írd ki, hogy nincs hiányzó számjegy!
+Sorsolj ki egy 10 számjegyű számot. Írd ki azokat a 3 számjegyű számokat, amelyek az eredeti számjegyekből összerakhatóak úgy, hogy a számjegyeik növekvő sorrenden állnak. Ugyanazt a számot ne írd ki kétszer! Ha nincsenek ilyenek, akkor írd ki, hogy nincsenek ilyen számok!
+Sorsolj ki egy 5 számjegyű számot. Írd ki, hogy van-e olyan számjegye, amelyik nagyobb a többi számjegy összegénél! Ha van ilyen, írd ki melyik az! Ha nincs ilyen, írd ki, hogy nincs ilyen számjegy!
